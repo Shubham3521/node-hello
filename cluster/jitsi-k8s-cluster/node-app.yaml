@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeapp-deployment
+  labels:
+    app: nodeapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodeapp
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nodeapp
+        image: 422299502737.dkr.ecr.eu-central-1.amazonaws.com/node-hello:latest
+        ports:
+        - containerPort: 3000
